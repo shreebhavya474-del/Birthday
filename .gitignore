@@ -1,0 +1,26 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs & Runtime
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Node / Build (if added in future)
+node_modules/
+dist/
+build/
+.vercel/
+
+.vercel
+
+*.zip
