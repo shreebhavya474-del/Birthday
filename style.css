@@ -26,3 +26,13 @@ button{font:inherit}button:focus-visible{outline:3px solid #ffd76b;outline-offse
 #confetti-layer{position:fixed;inset:0;z-index:200;pointer-events:none;overflow:hidden}.confetti{position:absolute;top:-20px;width:9px;height:14px;animation:confettiFall var(--dur,3s) linear forwards}@keyframes confettiFall{to{transform:translate(var(--drift,40px),110vh) rotate(760deg);opacity:.2}}
 @media(max-width:700px){.quiz-card{flex-direction:column}.quiz-visual-side{height:36%;flex:none}.rosette-cameo{width:min(55vw,230px)}.quiz-input-side{flex:1}.passcode-container{padding:4px}.passcode-header{margin-bottom:6px}#quiz-title{font-size:1.3rem}.passcode-boxes-wrap{margin:8px}.passcode-box{width:40px;height:42px}.keypad{grid-template-columns:repeat(3,54px);gap:8px 14px}.key-btn{width:54px;height:54px}.gift-grid{grid-template-columns:1fr;max-width:340px;width:100%;gap:12px}.gift-box{min-height:135px;padding:18px}.gift-emoji{font-size:2.2rem}.gift-page{padding:24px 16px}.surprise-paper-card{border-radius:22px;padding:14px}.curved-title-wrap{height:72px}.arched-text{font-size:42px}.dance-gif-wrap{height:26vh}.prompt-text{font-size:1.2rem}.pill-btn{min-width:110px;padding:10px 26px}.btn-label{font-size:1.5rem}.modal-panel{padding:24px 14px}.hanging-polaroid-item{flex-basis:155px}.hanging-polaroid-item img{height:155px}.letter-paper{padding:36px 22px 24px}.letter-paper h2{font-size:1.6rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+/* Screen visibility fix */
+.screen.hidden-screen {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.screen.show-screen {
+  opacity: 1;
+  pointer-events: auto;
+}
