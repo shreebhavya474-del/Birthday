@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8b759f">
+  <title>Secret Birthday Gift 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg-ambient" aria-hidden="true"></div>
+
+  <main id="quiz-screen" class="screen show">
+    <section class="quiz-card">
+      <div class="quiz-visual-side">
+        <span class="cameo-star s1">✦</span><span class="cameo-star s2">✧</span>
+        <span class="cameo-star s3">★</span><span class="cameo-star s4">✦</span>
+        <span class="cameo-star s5">✧</span><span class="cameo-star s6">★</span>
+        <div class="rosette-cameo">
+          <svg class="rosette-svg" viewBox="0 0 300 300" aria-hidden="true">
+            <path class="rosette-petals" d="M150 5 C180 35 205 35 235 18 C235 55 255 75 292 78 C270 110 275 140 298 165 C260 178 247 205 255 242 C220 230 190 245 175 282 C150 252 120 252 94 282 C82 245 55 230 18 242 C30 205 17 178 2 165 C25 140 30 110 8 78 C45 75 65 55 65 18 C95 35 120 35 150 5Z"/>
+            <circle class="rosette-ring-outer" cx="150" cy="150" r="112"/>
+            <circle class="rosette-ring-inner" cx="150" cy="150" r="101"/>
+          </svg>
+          <div class="shinchan-box"><img id="shinchan-img" src="shinchan-birthday.png" alt="Birthday Shinchan"></div>
+        </div>
+      </div>
+      <div class="quiz-input-side">
+        <div class="passcode-container">
+          <div class="passcode-header">
+            <h1 id="quiz-title">A Little Birthday Surprise</h1>
+            <p id="quiz-text">Enter the secret 4-digit code to unlock 🎀</p>
+          </div>
+          <div class="passcode-boxes-wrap" aria-label="Passcode">
+            <div class="passcode-box active" id="b0"></div><div class="passcode-box" id="b1"></div>
+            <div class="passcode-box" id="b2"></div><div class="passcode-box" id="b3"></div>
+          </div>
+          <div class="keypad">
+            <button class="key-btn" onclick="pressKey('1')"><span>1</span></button>
+            <button class="key-btn" onclick="pressKey('2')"><span>2</span></button>
+            <button class="key-btn" onclick="pressKey('3')"><span>3</span></button>
+            <button class="key-btn" onclick="pressKey('4')"><span>4</span></button>
+            <button class="key-btn" onclick="pressKey('5')"><span>5</span></button>
+            <button class="key-btn" onclick="pressKey('6')"><span>6</span></button>
+            <button class="key-btn" onclick="pressKey('7')"><span>7</span></button>
+            <button class="key-btn" onclick="pressKey('8')"><span>8</span></button>
+            <button class="key-btn" onclick="pressKey('9')"><span>9</span></button>
+            <button class="key-btn key-action" onclick="deleteDigit()" aria-label="Delete">⌫</button>
+            <button class="key-btn" onclick="pressKey('0')"><span>0</span></button>
+            <button class="key-btn key-submit" onclick="submitBirthdayDate()" aria-label="Submit">✓</button>
+          </div>
+          <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
+          <button id="retry-btn" class="hidden-btn" onclick="resetQuiz()">Try again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="surprise-screen" class="screen hidden-screen">
+    <div class="gingham-stage">
+      <div class="surprise-paper-card">
+        <span class="card-bg-star cs1">✦</span><span class="card-bg-star cs2">★</span>
+        <span class="card-bg-star cs3">✧</span><span class="card-bg-star cs4">✦</span>
+        <span class="card-bg-star cs5">★</span><span class="card-bg-star cs6">✧</span>
+        <div class="curved-title-wrap">
+          <svg class="curved-title-svg" viewBox="0 0 800 120" role="img" aria-label="Happy Birthday">
+            <defs><path id="title-arch" d="M 55 105 Q 400 -20 745 105"/></defs>
+            <text class="arched-text"><textPath id="arch-text-path" href="#title-arch" startOffset="50%" text-anchor="middle">A Birthday Surprise!</textPath></text>
+          </svg>
+        </div>
+        <div class="dance-gif-wrap"><img id="dance-gif" src="shinchan-dance.gif" alt="Shinchan dancing"></div>
+        <p id="surprise-prompt" class="prompt-text">Are you ready for your surprise? 🎁</p>
+        <div class="surprise-btn-group" id="surprise-buttons">
+          <button class="pill-btn" onclick="handleChoice('yes')"><span class="btn-label">YES</span><i class="btn-shine-tr"></i></button>
+          <button class="pill-btn" onclick="handleChoice('no')"><span class="btn-label">NO</span><i class="btn-shine-bl"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gift-screen" class="screen hidden-screen">
+    <div class="gift-page">
+      <p class="eyebrow">A tiny collection of surprises</p>
+      <h1 class="gift-title">Choose Your Mystery Gift 🎀</h1>
+      <p class="gift-subtitle">Three little boxes, made with lots of care.</p>
+      <div class="gift-grid">
+        <button class="gift-box" onclick="openMysteryBox(1)">
+          <span class="gift-number">01</span><span class="gift-emoji">📸</span>
+          <strong>Memory Lane</strong><small>A few favourite moments</small>
+        </button>
+        <button class="gift-box" onclick="openMysteryBox(2)">
+          <span class="gift-number">02</span><span class="gift-emoji">🎂</span>
+          <strong>Make a Wish</strong><small>A birthday cake surprise</small>
+        </button>
+        <button class="gift-box" onclick="openMysteryBox(3)">
+          <span class="gift-number">03</span><span class="gift-emoji">💌</span>
+          <strong>A Little Letter</strong><small>Words just for you</small>
+        </button>
+      </div>
+      <div class="gift-footer">Made to make your birthday a little brighter ✨</div>
+    </div>
+  </section>
+
+  <!-- Memory gallery -->
+  <div id="memories-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Memory gallery">
+    <div class="modal-backdrop" onclick="closeMemoriesModal()"></div>
+    <section class="memory-board modal-panel" id="memories-board-container">
+      <button class="close-btn" onclick="closeMemoriesModal()" aria-label="Close">×</button>
+      <p class="eyebrow">Little moments, big smiles</p>
+      <h2 class="section-title">MEMORIES ✨</h2>
+      <div class="memory-controls">
+        <button class="round-control" onclick="scrollClothesline(-1)" aria-label="Scroll left">‹</button>
+        <span>Swipe or use the arrows</span>
+        <button class="round-control" onclick="scrollClothesline(1)" aria-label="Scroll right">›</button>
+      </div>
+      <div class="clothesline"><span></span></div>
+      <div id="clothesline-photos-track" class="photo-track">
+        <figure class="hanging-polaroid-item tilt-left" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memory1.jpg" alt="Memory 1"><figcaption>Waku Waku Cake! 🎂</figcaption></figure>
+        <figure class="hanging-polaroid-item tilt-right" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memory2.jpg" alt="Memory 2"><figcaption>Peanuts &amp; Gifts 🎁</figcaption></figure>
+        <figure class="hanging-polaroid-item tilt-left" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memory3.jpg" alt="Memory 3"><figcaption>Best Friend Chimera! 🎈</figcaption></figure>
+        <figure class="hanging-polaroid-item tilt-right" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memory4.jpg" alt="Memory 4"><figcaption>Make a Wish 🕯️</figcaption></figure>
+        <figure class="hanging-polaroid-item tilt-left" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memory5.jpg" alt="Memory 5"><figcaption>Secret Spy with Bond 🕵️</figcaption></figure>
+        <figure class="hanging-polaroid-item tilt-right" onclick="focusHangingPhoto(this)"><i class="peg"></i><img src="memories6.jpg" alt="Memory 6"><figcaption>Anya's Little Adventure ✨</figcaption></figure>
+      </div>
+      <p class="memory-note">Every picture holds a little story 💗</p>
+    </section>
+  </div>
+
+  <!-- Birthday cake -->
+  <div id="cake-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Birthday cake">
+    <div class="modal-backdrop" onclick="closeCakeModal()"></div>
+    <section class="cake-panel modal-panel">
+      <button class="close-btn" onclick="closeCakeModal()" aria-label="Close">×</button>
+      <p class="eyebrow">Your special moment</p>
+      <h2 class="cake-title">Make a Birthday Wish! 🎂</h2>
+      <p class="cake-instruction">Tap each candle flame to blow it out.</p>
+      <div class="cake-scene">
+        <div class="cake-candles">
+          <button class="candle" onclick="blowCandle(1,event)" aria-label="Blow candle 1"><span id="flame-1" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(2,event)" aria-label="Blow candle 2"><span id="flame-2" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(3,event)" aria-label="Blow candle 3"><span id="flame-3" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(4,event)" aria-label="Blow candle 4"><span id="flame-4" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(5,event)" aria-label="Blow candle 5"><span id="flame-5" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(6,event)" aria-label="Blow candle 6"><span id="flame-6" class="flame"></span><i></i></button>
+          <button class="candle" onclick="blowCandle(7,event)" aria-label="Blow candle 7"><span id="flame-7" class="flame"></span><i></i></button>
+        </div>
+        <div class="cake-top"><span>HAPPY</span><span>BIRTHDAY</span></div>
+        <div class="cake-layer layer-one"></div><div class="cake-layer layer-two"></div>
+        <div class="cake-plate"></div>
+      </div>
+      <p id="cake-footer-hint" class="cake-hint">7 candles • 7 wishes • one wonderful day</p>
+      <button id="cake-wish-button" class="primary-btn" onclick="makeCakeWish(event)" disabled>Make a wish ✨</button>
+      <div id="cake-wish-banner" class="wish-banner hidden">May your wishes come true! 🎉💖</div>
+      <button class="text-btn" onclick="resetCake()">Relight candles</button>
+    </section>
+  </div>
+
+  <!-- Birthday letter -->
+  <div id="letter-modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Birthday letter" onclick="handleLetterOverlayClick(event)">
+    <div class="modal-backdrop letter-bg-backdrop"></div>
+    <section class="letter-card-container animate-letter">
+      <button class="close-btn" onclick="closeLetterModal()" aria-label="Close">×</button>
+      <div class="letter-paper">
+        <div class="letter-stamp">🎀</div>
+        <p class="eyebrow">A note for your special day</p>
+        <h2 id="letter-headline-el">Happy birthday to my favourite person! ❤️</h2>
+        <p id="letter-p1-el"></p>
+        <p id="letter-p2-el"></p>
+        <p id="letter-closing-el"></p>
+        <button id="letter-skip-btn" class="primary-btn" onclick="skipLetterTypewriter()">Read the full letter</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="confetti-layer" aria-hidden="true"></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
